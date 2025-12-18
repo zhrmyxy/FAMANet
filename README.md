@@ -15,6 +15,7 @@ The AMAM module is parameter-free, and its operations are primarily based on mat
 </div>
 As demonstrated by the experimental results, AMAM has a low computational cost and exerts minimal impact on model inference speed.
 
+--
 Noisy support mask experiment: To evaluate the model's robustness to imperfect annotations, we simulate noise by applying morphological dilation to the support masks. Specifically, we expand the mask boundaries using kernels of varying sizes. This process inevitably introduces background regions into the support features, creating a challenging scenario.
 <div align="center">
   <img width="674" height="142" alt="image" src="https://github.com/user-attachments/assets/cf3a2bc5-8fe1-477f-a18f-dace70a3dc2a" />
