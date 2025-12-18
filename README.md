@@ -35,7 +35,7 @@ We followed the standard protocol by using the template "a photo of a {class}" f
 ### Experimental fairness and resolution effects
 To address fairness concerns arising from differing resolution settings, we conducted balanced comparative experiments at the two commonly used resolutions in this field: 473×473 and 448×448. FAMANet exhibits strong robustness to input size variations, with performance fluctuations across different resolutions remaining within 0.3%. Moreover, our method operates at a lower resolution, resulting in reduced memory consumption and faster inference speed. Most importantly, even after strictly aligning the resolution settings, our approach maintains superior performance. This conclusively demonstrates that the performance improvement is primarily attributable to architectural enhancements rather than differences in experimental configuration.
 <div align="center">
-  <img width="719" height="118" alt="image" src="https://github.com/user-attachments/assets/ee954c6a-94b5-43cb-bfdf-283511edf6c7" />
+  <img width="716" height="115" alt="image" src="https://github.com/user-attachments/assets/e99a6ddb-8ce2-444a-a907-f17d63005d38" />
 </div>
 
 ### Implementation Details
