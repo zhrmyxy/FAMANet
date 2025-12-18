@@ -1,16 +1,7 @@
-### Experimental fairness
-感谢审稿人的意见。为了消除分辨率设置不同带来的公平性担忧，我们在本领域通用的473×473和448×448分辨率下进行了等量对比实验。实验结果表明FAMANet对输入尺寸的变化具有较强的鲁棒性，不同分辨率下的性能波动仅在 0.3% 以内。更重要的是，在完全对齐分辨率设置后，我们的方法依然保持了优异的性能。这充分证实了性能的提升主要归因于网络结构的改进，而非实验配置的差异。后面补充的消融均在PAscal-5i数据集上实现。
-<div align="center">
-  <img width="672" height="115" alt="image" src="https://github.com/user-attachments/assets/c03113d5-4521-4f0c-91ea-e38be0759450" />
-</div>
+We thank the reviewer for the comments.
 
-### Implementation Details
-为了确保结果的可复现性，我们的实验设置严格参照了 HSNet 和 DCAMA 的实验条件，并进行了特定调整：我们采用 Adam 优化器（初始学习率设置为 1e-4），共训练 100 个 epoch 直至收敛。此外，遵循 HSNet 的设置，我们在此训练阶段未引入额外的数据增强策略。所有实验均在 4 张 NVIDIA RTX 4090 GPU 上完成。
-训练设置见- **Source Code**: The implementation of train can be found in [`train.sh`](./scripts/train.sh). 
-测试设置见- **Source Code**: The implementation of test can be found in [`test.sh`](./scripts/test.sh). 
-其余超参数设置见- **Source Code**: The implementation of config can be found in [`config.py`](./common/config.py). 
-
-### Response to PAAM module
+### Response to Reviewer#1
+# Response to PAAM module
 我们确认Wa和Wp是通过端到端的反向传播自适应学习得到的，设计了一个轻量级的参数生成网络，该子网络包含全局平均池化层和两层MLP（Linear -> ReLU -> Linear -> Softmax）。
 对于共享变换，我们使用线性层进行降维的时候使用了共享的线性层，而生成各自变换时使用独立的线性层，共享权重通过减少参数量起到了正则化作用，防止了小样本任务中的过拟合，强制幅度和相位特征在统一的潜空间中对齐。
 对于权重消融研究如下表所示：
@@ -39,6 +30,21 @@ We followed the standard protocol by using the template "a photo of a {class}" f
 <div align="center">
   <img width="615" height="190" alt="image" src="https://github.com/user-attachments/assets/718d1ec8-e904-4da9-9289-de64d345c1fd" />
 </div>
+
+### Response to Reviewer#2
+# Experimental fairness
+To address fairness concerns arising from differing resolution settings, we conducted balanced comparative experiments at the two commonly used resolutions in this field: 473×473 and 448×448. The experimental results demonstrate that FAMANet exhibits strong robustness to input size variations, with performance fluctuations across different resolutions remaining within 0.3%. More importantly, even after strictly aligning the resolution settings, our method maintains superior performance. This fully confirms that the performance improvement is primarily attributable to enhancements in network architecture rather than differences in experimental configuration. All subsequent ablation studies were conducted on the Pascal-5i dataset.
+<div align="center">
+  <img width="672" height="115" alt="image" src="https://github.com/user-attachments/assets/c03113d5-4521-4f0c-91ea-e38be0759450" />
+</div>
+
+### Implementation Details
+To ensure result reproducibility, our experimental setup strictly follows the conditions of HSNet and DCAMA, with specific adjustments: we employ the Adam optimizer (initial learning rate set to 1e-4) and train for 100 epochs until convergence. Additionally, consistent with HSNet's configuration, no extra data augmentation strategies are introduced during this training phase. All experiments are conducted on four NVIDIA RTX 4090 GPUs.
+
+-**Source Code**: The implementation of train can be found in [`train.sh`](./scripts/train.sh). 
+- **Source Code**: The implementation of test can be found in [`test.sh`](./scripts/test.sh). 
+- **Source Code**: The implementation of config can be found in [`config.py`](./common/config.py). 
+
 
 # Frequency-enhanced Affinity Map Weighted Mask Aggregation for Few-Shot Semantic Segmentation
 
