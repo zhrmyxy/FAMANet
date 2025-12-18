@@ -1,6 +1,6 @@
 # We thank the reviewer for the comments.
 
-# Response to Reviewer#1:
+# Response to Reviewer #1:
 ### PAAM module analysis
 We confirm that Wa and Wp are adaptively learned via end-to-end backpropagation. A lightweight parameter generation network is designed, consisting of a global average pooling layer and a two-layer MLP (Linear → ReLU → Linear → Softmax). For shared transformations, a shared linear layer is employed for dimensionality reduction, while independent linear layers are used to generate individual transformations. The shared weights serve a regularizing effect by reducing the number of parameters, thereby preventing overfitting in few-shot tasks and enforcing alignment of magnitude and phase features within a unified latent space.
 For the weight ablation study, refer to the following table:
@@ -31,7 +31,7 @@ We followed the standard protocol by using the template "a photo of a {class}" f
   <img width="615" height="190" alt="image" src="https://github.com/user-attachments/assets/718d1ec8-e904-4da9-9289-de64d345c1fd" />
 </div>
 
-# Response to Reviewer#2:
+# Response to Reviewer #2:
 ### Experimental fairness and resolution effects
 To address fairness concerns arising from differing resolution settings, we conducted balanced comparative experiments at the two commonly used resolutions in this field: 473×473 and 448×448. FAMANet exhibits strong robustness to input size variations, with performance fluctuations across different resolutions remaining within 0.3%. Moreover, our method operates at a lower resolution, resulting in reduced memory consumption and faster inference speed. Most importantly, even after strictly aligning the resolution settings, our approach maintains superior performance. This conclusively demonstrates that the performance improvement is primarily attributable to architectural enhancements rather than differences in experimental configuration.
 <div align="center">
