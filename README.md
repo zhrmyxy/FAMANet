@@ -1,6 +1,14 @@
 ### Experimental fairness
-感谢审稿人的意见，本文严格按照了HSNet以及DCAMA的实验条件下进行，与之不同的是，我们改变了优化器SGD，修改成了Adam，学习率设置为1e-4，训练100轮次并遵循HSNet在没有数据增强的情况下训练我们的模型，直到收敛，以便与之前的最佳性能方法进行公平的比较。训练和推理是在四个NVIDIA RTX 4090上。我们与DCAMA采用一致的分辨率384*384，为了与Swin-B适配。对比实验中部分采用了473*473分辨率，我们进行等量实验使用分辨率为473*473，其他实验条件保持不变。训练过程中473*473分辨率显存占用明显增大，并且训练时间过长。其最终性能与384*384相比：？
+感谢审稿人的意见。为了消除分辨率设置不同带来的公平性担忧，我们在本领域通用的473×473和448×448分辨率下进行了等量对比实验。实验结果表明FAMANet对输入尺寸的变化具有较强的鲁棒性，不同分辨率下的性能波动仅在 0.3% 以内。更重要的是，在完全对齐分辨率设置后，我们的方法依然保持了优异的性能。这充分证实了性能的提升主要归因于网络结构的改进，而非实验配置的差异。
+<div align="center">
+  <img width="672" height="115" alt="image" src="https://github.com/user-attachments/assets/c03113d5-4521-4f0c-91ea-e38be0759450" />
+</div>
 
+### Implementation Details
+为了确保结果的可复现性，我们的实验设置严格参照了 HSNet 和 DCAMA 的实验条件，并进行了特定调整：我们采用 Adam 优化器（初始学习率设置为 1e-4），共训练 100 个 epoch 直至收敛。此外，遵循 HSNet 的设置，我们在此训练阶段未引入额外的数据增强策略。所有实验均在 4 张 NVIDIA RTX 4090 GPU 上完成。
+训练设置见- **Source Code**: The implementation of train can be found in [`train.sh`](./scripts/train.sh). 
+测试设置见- **Source Code**: The implementation of test can be found in [`test.sh`](./scripts/test.sh). 
+其余超参数设置见- **Source Code**: The implementation of config can be found in [`config.py`](./common/config.py). 
 
 ### Response to PAAM module
 我们确认Wa和Wp是通过端到端的反向传播自适应学习得到的，设计了一个轻量级的参数生成网络，该子网络包含全局平均池化层和两层MLP（Linear -> ReLU -> Linear -> Softmax）。
