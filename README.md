@@ -1,7 +1,7 @@
 # We thank the reviewer for the comments.
 
 # Response to Reviewer#1:
-### Response to PAAM module
+### PAAM module analysis
 We confirm that Wa and Wp are adaptively learned via end-to-end backpropagation. A lightweight parameter generation network is designed, consisting of a global average pooling layer and a two-layer MLP (Linear → ReLU → Linear → Softmax). For shared transformations, a shared linear layer is employed for dimensionality reduction, while independent linear layers are used to generate individual transformations. The shared weights serve a regularizing effect by reducing the number of parameters, thereby preventing overfitting in few-shot tasks and enforcing alignment of magnitude and phase features within a unified latent space.
 For the weight ablation study, refer to the following table:
 <div align="center">
