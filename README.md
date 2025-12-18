@@ -7,6 +7,7 @@ For the weight ablation study, refer to the following table:
 <div align="center">
   <img width="676" height="139" alt="image" src="https://github.com/user-attachments/assets/c8a1b3d4-d058-4146-adf5-26b395a69606" />
 </div>
+Experiments demonstrate that the dynamic gating achieves optimal performance.
 
 ### Cost Analysis of AMAM Calculation
 The AMAM module is parameter-free, and its operations are primarily based on matrix multiplication, resulting in a computational complexity of O(N²), where N is determined by the height (H) and width (W) of the features.
