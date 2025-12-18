@@ -1,37 +1,35 @@
 # We thank the reviewer for the comments.
 
-# Response to Reviewer#1
+# Response to Reviewer#1:
 ### Response to PAAM module
-我们确认Wa和Wp是通过端到端的反向传播自适应学习得到的，设计了一个轻量级的参数生成网络，该子网络包含全局平均池化层和两层MLP（Linear -> ReLU -> Linear -> Softmax）。
-对于共享变换，我们使用线性层进行降维的时候使用了共享的线性层，而生成各自变换时使用独立的线性层，共享权重通过减少参数量起到了正则化作用，防止了小样本任务中的过拟合，强制幅度和相位特征在统一的潜空间中对齐。
-对于权重消融研究如下表所示：
+We confirm that Wa and Wp are adaptively learned via end-to-end backpropagation. A lightweight parameter generation network is designed, consisting of a global average pooling layer and a two-layer MLP (Linear → ReLU → Linear → Softmax). For shared transformations, a shared linear layer is employed for dimensionality reduction, while independent linear layers are used to generate individual transformations. The shared weights serve a regularizing effect by reducing the number of parameters, thereby preventing overfitting in few-shot tasks and enforcing alignment of magnitude and phase features within a unified latent space.
+For the weight ablation study, refer to the following table:
 <div align="center">
   <img width="676" height="139" alt="image" src="https://github.com/user-attachments/assets/c8a1b3d4-d058-4146-adf5-26b395a69606" />
 </div>
 
 ### Cost Analysis of AMAM Calculation
-AMAM模块是无参数的，其运算主要是由矩阵乘法得到，计算复杂度是O（N2）
+The AMAM module is parameter-free, and its operations are primarily based on matrix multiplication, resulting in a computational complexity of O(N²), where N is determined by the height (H) and width (W) of the features.
 <div align="center">
   <img width="621" height="90" alt="image" src="https://github.com/user-attachments/assets/6d0acfc7-adcb-4f26-ae37-f4d5e9acf01f" />
 </div>
-由实验结果可见，AMAM的计算成本极低，对于模型推理速度几乎不影响。
+As demonstrated by the experimental results, AMAM has a low computational cost and exerts minimal impact on model inference speed.
 
-含噪声支持掩码实验：为了评估模型对不完美标注的鲁棒性，我们通过对 支持 掩码应用形态学膨胀来模拟噪声。具体来说，我们使用不同大小的核来扩展掩码边界。这一过程不可避免地将背景杂质引入到支持特征中，创造了一个具有挑战性的场景。
+Noisy support mask experiment: To evaluate the model's robustness to imperfect annotations, we simulate noise by applying morphological dilation to the support masks. Specifically, we expand the mask boundaries using kernels of varying sizes. This process inevitably introduces background regions into the support features, creating a challenging scenario.
 <div align="center">
   <img width="674" height="142" alt="image" src="https://github.com/user-attachments/assets/cf3a2bc5-8fe1-477f-a18f-dace70a3dc2a" />
 </div>
 
-由此表可见在膨胀率20，支持掩码具有严重噪声情况下，我们的模型仍然保持一定的性能，证明了我们模型面对含噪声支持掩码的实验鲁棒性
+As shown in this table, even under a dilation rate of 20 and with severely noisy support masks, our model still maintains certain performance, demonstrating the robustness of our model in experiments involving noisy support masks.
 
 ### CTSGM and Generalization of the model
 We followed the standard protocol by using the template "a photo of a {class}" for text embeddings. Additionally, we explicitly verified the generalization effectiveness of our method through cross-domain experiments transferred from COCO-20i to PASCAL-5i.
-本文实验采用的是标准模板：a photo of a {class},进一步本文在跨数据集上实验COCO-20i to PAscal-5i验证其泛化有效性.
 
 <div align="center">
   <img width="615" height="190" alt="image" src="https://github.com/user-attachments/assets/718d1ec8-e904-4da9-9289-de64d345c1fd" />
 </div>
 
-# Response to Reviewer#2
+# Response to Reviewer#2:
 ### Experimental fairness
 To address fairness concerns arising from differing resolution settings, we conducted balanced comparative experiments at the two commonly used resolutions in this field: 473×473 and 448×448. The experimental results demonstrate that FAMANet exhibits strong robustness to input size variations, with performance fluctuations across different resolutions remaining within 0.3%. More importantly, even after strictly aligning the resolution settings, our method maintains superior performance. This fully confirms that the performance improvement is primarily attributable to enhancements in network architecture rather than differences in experimental configuration. All subsequent ablation studies were conducted on the Pascal-5i dataset.
 <div align="center">
@@ -41,7 +39,7 @@ To address fairness concerns arising from differing resolution settings, we cond
 ### Implementation Details
 To ensure result reproducibility, our experimental setup strictly follows the conditions of HSNet and DCAMA, with specific adjustments: we employ the Adam optimizer (initial learning rate set to 1e-4) and train for 100 epochs until convergence. Additionally, consistent with HSNet's configuration, no extra data augmentation strategies are introduced during this training phase. All experiments are conducted on four NVIDIA RTX 4090 GPUs.
 
--**Source Code**: The implementation of train can be found in [`train.sh`](./scripts/train.sh). 
+- **Source Code**: The implementation of train can be found in [`train.sh`](./scripts/train.sh). 
 - **Source Code**: The implementation of test can be found in [`test.sh`](./scripts/test.sh). 
 - **Source Code**: The implementation of config can be found in [`config.py`](./common/config.py). 
 
