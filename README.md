@@ -33,13 +33,13 @@ We followed the standard protocol by using the template "a photo of a {class}" f
 
 # Response to Reviewer #4E42:
 ### Experimental fairness and resolution effects
-Experiments were conducted under the commonly used resolutions in our field (473×473, 448×448). FAMANet demonstrates robustness to input resolution, with performance fluctuations within 0.3%. Specifically, we achieved 70.5% performance at both 384×384 and 448×448 resolutions, and 70.2% at 473×473 resolution. Lower-resolution inputs enable faster inference speed (18.93 FPS vs. 12.47 FPS). The performance advantage is still maintained when using the higher resolution of 473×473, confirming that the improvement stems from model enhancement rather than configuration differences.
+We first clarify that the resolution commonly used in state-of-the-art (SOTA) methods, 473×473, contains 52% more pixel information than the resolution of 384×384 adopted in this work, which typically benefits segmentation performance. To alleviate concerns, we re-evaluated under the SOTA setting and achieved 70.2% mIoU (473×473), still outperforming existing methods under the same configuration, which strongly demonstrates that the performance gain stems from improvements in the model architecture itself. Moreover, the original 384×384 setting maintains excellent performance (70.5%) while significantly improving inference speed compared to higher resolutions (18.93 FPS vs. 12.47 FPS).
 <div align="center">
   <img width="716" height="115" alt="image" src="https://github.com/user-attachments/assets/e99a6ddb-8ce2-444a-a907-f17d63005d38" />
 </div>
 
 ### Implementation Details
-To ensure result reproducibility, our experimental setup strictly follows the conditions of HSNet and DCAMA, with specific adjustments: we employ the Adam optimizer (initial learning rate set to 1e-4) and train for 100 epochs until convergence. Additionally, consistent with HSNet's configuration, no extra data augmentation strategies are introduced during this training phase. All experiments are conducted on four NVIDIA RTX 4090 GPUs.
+As described in Section 3.0 (EXPERIMENTS AND RESULTS) of the original text. To ensure result reproducibility, our experimental setup strictly follows the conditions of HSNet and DCAMA, with specific adjustments: we employ the Adam optimizer (initial learning rate set to 1e-4) and train for 100 epochs until convergence. Additionally, consistent with HSNet's configuration, no extra data augmentation strategies are introduced during this training phase. All experiments are conducted on four NVIDIA RTX 4090 GPUs.
 
 - **Source Code**: The implementation of train can be found in [`train.sh`](./scripts/train.sh). 
 - **Source Code**: The implementation of test can be found in [`test.sh`](./scripts/test.sh). 
