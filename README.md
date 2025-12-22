@@ -45,7 +45,12 @@ As described in Section 3.0 (EXPERIMENTS AND RESULTS) of the original text. To e
 - **Source Code**: The implementation of test can be found in [`test.sh`](./scripts/test.sh). 
 - **Source Code**: The implementation of config can be found in [`config.py`](./common/config.py). 
 
-<br>
+
+
+
+
+
+
 # Frequency-enhanced Affinity Map Weighted Mask Aggregation for Few-Shot Semantic Segmentation
 
 <div align="center">
