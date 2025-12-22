@@ -48,9 +48,9 @@ As described in Section 3.0 (EXPERIMENTS AND RESULTS) of the original text. To e
 
 
 
-
-
-
+<br />
+<br />
+<br />
 # Frequency-enhanced Affinity Map Weighted Mask Aggregation for Few-Shot Semantic Segmentation
 
 <div align="center">
