@@ -46,8 +46,8 @@ As described in Section 3.0 (EXPERIMENTS AND RESULTS) of the original text. To e
 - **Source Code**: The implementation of config can be found in [`config.py`](./common/config.py). 
 
 
-
-
+<br />
+<br />
 <br />
 <br />
 <br />
@@ -109,12 +109,15 @@ AMAM utilizes cross-attention mechanisms to aggregate mask weights based on affi
 ###   DataSet
 <div align="center">
   <img width="729" height="753" alt="image" src="https://github.com/user-attachments/assets/55194873-f3ce-4b0e-83cf-45745eeb3098" />
-
 </div>
 <div align="center">
   <img width="729" height="753" alt="image" src="https://github.com/user-attachments/assets/aa96ecb9-886a-4430-860d-d4ce653b1ed5" />
 </div>
 
+###   Visualization
+<div align="center">
+  <img width="1464" height="786" alt="image" src="https://github.com/user-attachments/assets/4d8bdb02-1ba7-485e-8407-fdffa1b5d68a" />
+</div>
 
 
 ## 🚀 Getting Started
