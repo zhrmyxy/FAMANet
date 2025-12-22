@@ -1,4 +1,4 @@
-# We thank the reviewer for the comments.
+# We appreciate the reviewers' helpful comments.
 
 # Response to Reviewer #3837:
 ### 1.PAAM module analysis
